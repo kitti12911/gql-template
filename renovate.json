@@ -1,0 +1,22 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "schedule": ["before 5am on monday"],
+  "enabledManagers": [
+    "custom.regex"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": [
+        "/README\\.md$/"
+      ],
+      "matchStrings": [
+        "go install (?<depName>[\\S]+?)@(?<currentValue>v\\S+)"
+      ],
+      "datasourceTemplate": "go"
+    }
+  ]
+}

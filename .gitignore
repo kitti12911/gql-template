@@ -1,0 +1,14 @@
+# test coverage
+coverage.out
+
+# config
+config.yml
+config.yaml
+
+# generated protobuf
+gen/
+
+# air
+tmp/
+
+.DS_Store

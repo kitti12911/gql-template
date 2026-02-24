@@ -1,0 +1,35 @@
+schema:
+  - graph/schema/*.graphqls
+
+exec:
+  filename: graph/generated.go
+  package: graph
+
+model:
+  filename: graph/model/models_gen.go
+  package: model
+
+resolver:
+  layout: follow-schema
+  dir: graph
+  package: graph
+  filename_template: "{name}.resolvers.go"
+
+omit_getters: true
+
+autobind:
+  - gql-template/graph/model
+
+models:
+  NullableString:
+    model:
+      - gql-template/graph/model.NullableString
+  NullableInt:
+    model:
+      - gql-template/graph/model.NullableInt
+  NullableFloat:
+    model:
+      - gql-template/graph/model.NullableFloat
+  NullableBool:
+    model:
+      - gql-template/graph/model.NullableBool

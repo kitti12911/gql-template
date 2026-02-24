@@ -1,0 +1,14 @@
+version: v2
+plugins:
+  - local: protoc-gen-go
+    out: gen/grpc
+    opt:
+      - paths=source_relative
+      - Mcommon/v1/pagination.proto=gql-template/gen/grpc/common/v1
+      - Mexample/v1/example.proto=gql-template/gen/grpc/example/v1
+  - local: protoc-gen-go-grpc
+    out: gen/grpc
+    opt:
+      - paths=source_relative
+      - Mcommon/v1/pagination.proto=gql-template/gen/grpc/common/v1
+      - Mexample/v1/example.proto=gql-template/gen/grpc/example/v1

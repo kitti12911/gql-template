@@ -1,0 +1,69 @@
+extend type Query {
+  example(id: ID!): Example! @auth
+  examples(
+    page: Int
+    pageSize: Int
+    filter: String
+    orderBy: String
+  ): ExampleList!
+}
+
+extend type Mutation {
+  createExample(input: CreateExampleInput!): CreateExampleResult! @auth
+  updateExample(id: ID!, input: UpdateExampleInput!): UpdateExampleResult! @auth
+  updateExamplePartial(
+    id: ID!
+    input: UpdateExamplePartialInput!
+  ): UpdateExamplePartialResult! @auth
+  deleteExample(id: ID!): DeleteExampleResult! @auth
+}
+
+type Example {
+  id: ID!
+  name: String!
+  description: String!
+  status: String!
+  createdAt: Time!
+  updatedAt: Time!
+}
+
+type ExampleList {
+  examples: [Example!]!
+  page: Int!
+  pageSize: Int!
+  totalPages: Int!
+  totalSize: Int!
+}
+
+input CreateExampleInput {
+  name: String!
+  description: String!
+}
+
+input UpdateExampleInput {
+  name: String!
+  description: String!
+  status: String!
+}
+
+input UpdateExamplePartialInput {
+  name: NullableString
+  description: NullableString
+  status: NullableString
+}
+
+type CreateExampleResult {
+  id: ID!
+}
+
+type UpdateExampleResult {
+  affectedRows: Int!
+}
+
+type UpdateExamplePartialResult {
+  affectedRows: Int!
+}
+
+type DeleteExampleResult {
+  affectedRows: Int!
+}

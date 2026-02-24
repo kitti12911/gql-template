@@ -1,0 +1,10 @@
+directive @auth on FIELD_DEFINITION
+
+scalar Time
+scalar NullableString
+scalar NullableInt
+scalar NullableFloat
+scalar NullableBool
+
+type Query
+type Mutation
